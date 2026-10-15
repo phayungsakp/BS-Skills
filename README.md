@@ -50,15 +50,18 @@ flowchart LR
 ต้องมี **Node.js 22+** และสิทธิ์อ่าน repo นี้
 
 ```bash
-npx skills add phayungsakp/bs-skills -g --all
+npx skills add phayungsakp/bs-skills -g --skill '*' -a claude-code codex cursor gemini-cli github-copilot -y
 ```
 
-ลงครบทุก skill ให้ทุก agent ที่เจอในเครื่องในคำสั่งเดียว ถ้าอยากเลือกเอง:
+ลงครบ 3 skill ให้ agent ที่ทีมใช้ในคำสั่งเดียว ถ้าใช้ agent อื่นให้เพิ่มชื่อหลัง `-a` (ใส่ชื่อผิด CLI จะแสดงรายชื่อที่ใช้ได้)
+
+> [!NOTE]
+> อย่าใช้ `-g --all` เพราะ `--all` ลงให้ **ทุก** agent ที่ CLI รู้จัก ซึ่งมี `eve` กับ `promptscript` ที่ไม่รองรับการติดตั้งแบบ global จะขึ้น `Failed to install 6` แต่ skill ลงให้ agent อื่นครบแล้ว ไม่ต้องทำอะไรเพิ่ม
 
 | ต้องการ | คำสั่ง |
 | --- | --- |
 | เลือก agent / skill แบบถามตอบ | `npx skills add phayungsakp/bs-skills -g` |
-| ลงแค่ skill เดียว | `npx skills add phayungsakp/bs-skills -g --skill bs-wm3` |
+| ลงแค่ skill เดียว | `npx skills add phayungsakp/bs-skills -g --skill bs-wm3 -a claude-code codex -y` |
 | ลงเข้า project (รันที่ root ของ project) | `npx skills add phayungsakp/bs-skills --all` |
 | อัปเดตเป็นเวอร์ชันล่าสุด | `npx skills update -g` |
 | ถอนการติดตั้ง | `npx skills remove bs-platform bs-platform-design-system bs-wm3 -g` |
@@ -75,7 +78,7 @@ git clone git@github.com:phayungsakp/bs-skills.git
 ```
 
 ```bash
-npx skills add ./bs-skills -g --all
+npx skills add ./bs-skills -g --skill '*' -a claude-code codex cursor gemini-cli github-copilot -y
 ```
 
 </details>
